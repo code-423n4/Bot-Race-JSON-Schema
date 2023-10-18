@@ -12,7 +12,7 @@ example:
         {
             "severity": "Low",
             "title": "some other title",
-            "description": "Example markdown decsription",
+            "description": "Example markdown description",
             "gasSavings": null,
             "category": null,
             "instances": [
@@ -34,7 +34,7 @@ example:
         {
             "severity": "Medium",
             "title": "Unchecked return value of low-level",
-            "description": "Example markdown decsription",
+            "description": "Example markdown description",
             "gasSavings": null,
             "category": "some category",
             "instances": [
