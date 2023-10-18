@@ -58,21 +58,21 @@ comment : **Optional** - string/null
 
 footnote: **Optional** - string/null
 
-findings: **Mandatory** - is an array of issues found.
+findings: **Mandatory** - array of issues found
 
-severity   : **Manditory** - string 
+severity   : **Mandatory** - string 
    
-title      : **Manditory** - string
+title      : **Mandatory** - string
    
-description: **Manditory** - string
+description: **Mandatory** - string
    
-gasSavings : **Optional** - number/null - This is for the total gas saving for the individual issue. If you wish to have the individual gas saving for each instance pleas add that into the content section of the instances.
+gasSavings : **Optional** - number/null. Total gas savings for the individual issue. If you wish to include the individual gas saving for each instance, please add that into the `content` section of the instances.
   
-category   : **Optional** - string/null this is not currently used but as there is discussion on the use of issue categories there is potential for this field to become required.
+category   : **Optional** - string/null. Not currently in use, but may become required in future.
   
-instances  : **Manditory** - an array is instances, this can be thought of in two ways. One as blocks of instances or each instance in the array as it's own instance.
+instances  : **Mandatory** - an array of instances. Supports either blocks of instances, or each instance in the array as its own instance.
 
-content : **Manditory** - string, this is where the content, code snippets, @augit tags, and the file would need be. Depending on if you wish to stack all content for an individual file here as a block or treat it as an individual instance. If you are wishing to treat these as seperate instances instead of a block of instances and you wish to the file to be present for each instance please make sure that you had this in the content of each issue.
+content : **Mandatory** - string; this is where the content, code snippets, @audit tags, and the file would need to be. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as seperate instances instead of a block of instances, and you want the file to be present for each instance, please ensure that you include this in the content of each issue.
 
 ### examples:
 
@@ -109,7 +109,7 @@ content : **Manditory** - string, this is where the content, code snippets, @aug
   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\```"
   
-loc     : **Manditory** - an array of lines of code for this instance. This is is where the total instances will be calculated from when the report is generated.
+loc     : **Mandatory** - an array of lines of code for this instance. This value will be used to calculate the total instances, when generating the report.
 
 ### examples:
 
