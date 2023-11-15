@@ -2,54 +2,6 @@
 
 ## JSON Schema
 
-------
-example:
-```
-{
-    "comment": "Hello all this is my sample bot ",
-    "footnote": "Thanks for reading!",
-    "findings": [
-        {
-            "severity": "Low",
-            "title": "some other title",
-            "description": "Example markdown description",
-            "gasSavings": null,
-            "category": null,
-            "instances": [
-                {
-                    "content": "Example markdown content",
-                    "loc": [
-                        "[207](https://somepretentlinesofcode207.com)",
-                        "[102](https://somepretentlinesofcode102.com)"
-                    ]
-                },
-                {
-                    "content": "Example markdown content",
-                    "loc": [
-                        "[202](https://somepretentlinesofcode202.com)"
-                    ]
-                }
-            ]
-        },
-        {
-            "severity": "Medium",
-            "title": "Unchecked return value of low-level",
-            "description": "Example markdown description",
-            "gasSavings": null,
-            "category": "some category",
-            "instances": [
-                {
-                    "content": "Example markdown content",
-                    "loc": [
-                        "[108](https://somepretentlinesofcode108.com)"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-
 ## Details
 
 -------
@@ -79,43 +31,7 @@ findings: **Mandatory** - array of issues found
 
 ------
 
-### content examples:
+## Example
 
-&nbsp;&nbsp;&nbsp;&nbsp;"content" : "\```solidity<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/// @notice Transfer ownership of an NFT -- THE CALLER IS RESPONSIBLE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///  TO CONFIRM THAT `_to` IS CAPABLE OF RECEIVING NFTS OR ELSE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///  THEY MAY BE PERMANENTLY LOST<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/// @dev Throws unless `msg.sender` is the current owner, an authorized<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///  operator, or the approved address for this NFT. Throws if `_from` is<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///  not the current owner. Throws if `_to` is the zero address. Throws if<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///  `_tokenId` is not a valid NFT.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/// @param _from The current owner of the NFT<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/// @param _to The new owner<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/// @param _tokenId The NFT to transfer<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function transferFrom(address _from, address _to, uint256 _tokenId) external payable;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\```"
-               
-&nbsp;&nbsp;&nbsp;&nbsp;"content" : "\```solidity<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File: src/BranchBridgeAgentExecutor.sol
-  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;53:      function executeNoSettlement(address _router, bytes calldata _payload) external payable onlyOwner {
-  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66       function executeWithSettlement(address _recipient, address _router, bytes calldata _payload)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;67           external<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;68           payable<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;69           onlyOwner<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;70:      {
-  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;104      function executeWithSettlementMultiple(address _recipient, address _router, bytes calldata _payload)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;105          external<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;106          payable<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;107          onlyOwner<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;108:     {
-  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\```"
-  
+This sample json come the winning bot (Hound) from teh recent Canto Bot race:
 
-### loc examples:
-
-&nbsp;&nbsp;&nbsp;&nbsp;"loc" : ["\[53\](https://github.com/code-423n4/2023-09-dev-test/blob/6c21f6b739252367c5fe770fed3ff76eb3ca2c8/src/BranchBridgeAgentExecutor.sol#L53-L53)", "\[66\](https://github.com/code-423n4/2023-09-dev-test/blob/6c21f6b739252367c5fe770fed3ff76eb3ca2c86/src/BranchBridgeAgentExecutor.sol#L66-L70)", "\[104\](https://github.com/code-423n4/2023-09-dev-test/blob/6c21f6b739252367c5fe770fed3ff76eb3ca2c86/src/BranchBridgeAgentExecutor.sol#L104-L108)"]
-				
