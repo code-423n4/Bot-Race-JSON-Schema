@@ -7,12 +7,20 @@ You can find the current schema [here](https://github.com/code-423n4/Bot-Race-JS
 If you want to test your report with our schema you can use this curl command your report:
 
 ```
-curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/main/schema.json -o schema.json
+curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.1.0/schema.json -o schema.json
 npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 ```
 
 A new version of the schema will be implemented soon and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json)
-the main change is that `severity` will turn into an enum and teh severity will be expected to match. 
+The main change is that `severity` will turn into an enum and teh severity will be expected to match. 
+
+If you want to test your report against the expected schems you can use thsi curl command:
+
+```
+curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.2.0/schema.json -o schema.json
+npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
+```
+
 
 ## Details
 
