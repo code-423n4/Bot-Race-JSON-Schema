@@ -4,6 +4,13 @@
 
 You can find the schema [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/schema.json)
 
+If you want to test your report with our schema you can use this curl command your report:
+
+```
+curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/main/schema.json -o schema.json
+npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
+```
+
 ## Details
 
 -------
