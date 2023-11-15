@@ -46,7 +46,7 @@
                         "items": {
                             "type": "object",
                             "properties": {
-                                "contents": {
+                                "content": {
                                     "description": "Content, code snippets, @audit tags, and the file would need to be. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as seperate instances instead of a block of instances, and you want the file to be present for each instance, please ensure that you include this in the content of each issue.",
                                     "type": "string"
                                 },
