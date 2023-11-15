@@ -21,7 +21,8 @@
                 "properties": {
                     "severity": {
                         "description": "High | Medium | Low | Gas | Refactoring | NonCritical | Disputed",
-                        "type": "string"
+                        "type": "string",
+                        "enum": ["High", "Medium", "Low", "Gas", "Refactoring", "NonCritical", "Disputed"]
                     },
                     "title": {
                         "description": "Title of issue",
