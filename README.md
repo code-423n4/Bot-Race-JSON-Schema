@@ -57,3 +57,5 @@ findings: **Mandatory** - array of issues found
 
 This sample json come the winning bot (Henry) report from the recent Canto Bot race. [view report](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/bot-henry-example.json)
 
+Here is an example report gist that is generated from the winning bot (Henry) report from the recent Canto Bot race. [view gist](https://gist.github.com/code423n4/f2f9d9ea48372636f7d67e29c71c59bb#D%E2%80%9124)
+
