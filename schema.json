@@ -51,7 +51,7 @@
                                 },
                                 "loc":{
                                     "description": "links to the line of code",
-                                    "type": "array"
+                                    "type": "array",
                                     "items": {
                                         "type": "string"
                                     }
