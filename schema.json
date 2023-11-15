@@ -6,11 +6,11 @@
     "properties": {
         "comment": {
             "description": "Optional comments that will be added in at the top of your report",
-            "type": "string"
+            "type": ["string", "null"]
         },
         "footnote": {
             "description": "Optional footnote that will be added in at the bottom of your report",
-            "type": "string"
+            "type": ["string", "null"]
         },
         "findings": {
             "description": "An array of all findings",
