@@ -2,6 +2,8 @@
 
 ## JSON Schema
 
+You can find the schema [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/schema.json)
+
 ## Details
 
 -------
