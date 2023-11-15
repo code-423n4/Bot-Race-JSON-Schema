@@ -2,19 +2,21 @@
 
 ## JSON Schema
 
-You can find the current schema [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.1.0/schema.json)
+You can find the current schema, v0.1.0, [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.1.0/schema.json)
 
-If you want to test your report with our schema you can use this curl command your report:
+If you want to test your report against the schema you can fetch the schema and use a JSON schema cli implementation such as [ajv-cli](https://github.com/ajv-validator/ajv-cli).
 
-```
+```sh
 curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.1.0/schema.json -o schema.json
 npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 ```
 
-A new version of the schema will be implemented soon and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json)
-The main change is that `severity` will turn into an enum and teh severity will be expected to match. 
+### Upcoming Version 0.2.0
 
-If you want to test your report against the expected schems you can use thsi curl command:
+A new version of the schema will be replace v0.1.0 soon (dates to be announced) and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json).
+This version restricts the values of `severity`, making it an enum instead of an open string.
+
+If you want to test your report against the upcoming schema you can fetch the latest tag and validate as before:
 
 ```
 curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.2.0/schema.json -o schema.json
