@@ -13,7 +13,7 @@ npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 
 ### Upcoming Version 0.2.0
 
-A new version of the schema will be replace v0.1.0 soon (dates to be announced) and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json).
+A new version of the schema will replace v0.1.0 soon (dates to be announced) and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json).
 This version restricts the values of `severity`, making it an enum instead of an open string.
 
 If you want to test your report against the upcoming schema you can fetch the latest tag and validate as before:
