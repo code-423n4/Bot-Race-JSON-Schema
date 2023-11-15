@@ -33,5 +33,5 @@ findings: **Mandatory** - array of issues found
 
 ## Example
 
-This sample json come the winning bot (Hound) from teh recent Canto Bot race:
+This sample json come the winning bot (Bot-Henry) report from the recent Canto Bot race. [view report](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/bot-henry-example.json)
 
