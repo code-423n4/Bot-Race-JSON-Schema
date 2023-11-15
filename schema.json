@@ -1,4 +1,5 @@
 {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Bot Report",
     "description": "Bot Race report schema",
     "type": "object",
@@ -54,11 +55,13 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string"
-                                    }
+                                    },
+                                    "minItems": 1
                                 }
                             },
                             "required":["contents", "loc"]
-                        }
+                        },
+                      "minItems": 1
                     }
                 },
                 "required": ["severity", "title", "description", "instances"]
