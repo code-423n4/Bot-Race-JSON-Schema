@@ -21,7 +21,7 @@
                 "properties": {
                     "severity": {
                         "description": "High | Medium | Low | Gas | Refactoring | NonCritical | Disputed",
-                        "type": "string",
+                        "type": "string"
                     },
                     "title": {
                         "description": "Title of issue",
@@ -58,7 +58,7 @@
                                     "minItems": 1
                                 }
                             },
-                            "required":["contents", "loc"]
+                            "required":["content", "loc"]
                         },
                       "minItems": 1
                     }
