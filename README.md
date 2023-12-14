@@ -11,15 +11,20 @@ curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.1.0/sc
 npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 ```
 
-### Upcoming Version 0.2.0
+### Upcoming Version 0.3.0
 
-A new version of the schema will replace v0.1.0 soon (dates to be announced) and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.2.0/schema.json).
-This version restricts the values of `severity`, making it an enum instead of an open string.
+A new version of the schema will replace v0.1.0 on Jan 1st and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.3.0/schema.json).
+**Changes**:
+
+- restricts the values of `severity`, making it an enum instead of an open string.
+- `content` and `description` are optional
+- `content` must be in code block format, we are expecting \`\`\` at the begining and end of this string.
+- `loc` must contain a link to the code or file.
 
 If you want to test your report against the upcoming schema you can fetch the latest tag and validate as before:
 
 ```
-curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.2.0/schema.json -o schema.json
+curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.3.0/schema.json -o schema.json
 npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 ```
 
@@ -36,20 +41,20 @@ footnote: **Optional** - string/null
 findings: **Mandatory** - array of issues found
 
 * severity   : **Mandatory** - string - current expected severity - "High" | "Medium" | "Low" | "Gas" | "Refactoring" | "NonCritical" | "Disputed"
-   
+
 * title      : **Mandatory** - string
-   
-* description: **Mandatory** - string
-   
+
+* description: **Optional** - string/null
+
 * gasSavings : **Optional** - float/null. Total gas savings for the individual issue. If you wish to include the individual gas saving for each instance, please add that into the `content` section of the instances.
-  
+
 * category   : **Optional** - string/null. Not currently in use, but may become required in future.
-  
-* instances  : **Mandatory** - an array of instances. Supports either blocks of instances, or each instance in the array as its own instance.
 
-  * content : **Mandatory** - string; this is where the content, code snippets, @audit tags, and the file would need to be. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as seperate instances instead of a block of instances, and you want the file to be present for each instance, please ensure that you include this in the content of each issue.
+* instances  : **Mandatory** - an array of instances.
 
-  * loc     : **Mandatory** - an array of lines of code for this instance. This value will be used to calculate the total instances, when generating the report.
+  * content : **Optional** - string/null - *This is expected to be in code block format and must start and end with \`\`\`. Content is for code snippets, @audit tags, and file data. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as seperate instances instead of a block of instances, and you need the file to be present for each instance, please ensure that you include this in the content of each issue. If the issue is with the whole file you may leave this empty and just have the link in the loc field*
+
+  * loc     : **Mandatory** - array of strings - *An array of lines of code for this instance. Each loc must contain a link to the file or the line of code.This value will be used to calculate the total instances, when generating the report.*
 
 ------
 
