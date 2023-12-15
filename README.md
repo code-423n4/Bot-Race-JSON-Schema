@@ -121,7 +121,7 @@ Links to the line of code.
 
 - Type: Array
 - Items: String
-- Pattern: https:\\/\\/github\\.com\\/[^\\/]+\\/.*\\.sol#L\\d+(-L\\d+)?\\)?$
+- Pattern: https:\\/\\/github\\.com\\/[^\\/]+\\/.*#L\\d+(-L\\d+)?\\)?$
 - Min Items: 1
 
 

@@ -56,7 +56,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "pattern": "https:\\/\\/github\\.com\\/[^\\/]+\\/.*\\.sol#L\\d+(-L\\d+)?\\)?$"
+                                        "pattern": "https:\\/\\/github\\.com\\/[^\\/]+\\/.*#L\\d+(-L\\d+)?\\)?$"
                                     },
                                     "minItems": 1
                                 }
