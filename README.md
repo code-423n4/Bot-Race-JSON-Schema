@@ -112,7 +112,7 @@ An array of instances where the issues have occurred. This can be separated out 
 This is expected to be in code block format and must start and end with ```. Content is for code snippets, @audit tags, and file data. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as separate instances instead of a block of instances, and you need the file to be present for each instance, please ensure that you include this in the content of each issue. If the issue is with the whole file you may leave this empty and just have the link in the loc field.
 
 - Type: String | Null
-- Pattern: ^(\`{3})[^\`]*(\`{3})$
+- Pattern: ^(\`{3})[^`]*(\\1)$
 
 #### LOC (Line of Code)
 
