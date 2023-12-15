@@ -68,6 +68,7 @@ Footnotes will be added at the bottom of your report. Accepts plain strings or v
 An array of all findings.
 
 - Type: Array
+- Min Items: 1
 
 ## Findings Array
 
