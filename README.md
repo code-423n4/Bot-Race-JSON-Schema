@@ -13,7 +13,7 @@ npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 
 ### Upcoming Version 0.3.0
 
-A new version of the schema will replace v0.1.0 on Jan 1st and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.3.0/schema.json).
+A new version of the schema will replace v0.1.0 on [Place Holder Date - TBD] and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.3.0/schema.json).
 **Changes**:
 
 - restricts the values of `severity`, making it an enum instead of an open string.
@@ -32,29 +32,97 @@ npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
 ## Details
 
 -------
-All string fields are intended to support markdown, please make sure that all special characters are escaped correctly to be parsed as JSON.
+# Bot Report Schema Documentation
 
-comment : **Optional** - string/null
+## Table of Contents
+- [Properties](#properties)
+  - [comment](#comment)
+  - [footnote](#footnote)
+  - [findings](#findings)
+- [Findings Array](#findings-array)
+  - [Severity](#severity)
+  - [Title](#title)
+  - [Description](#description)
+  - [Gas Savings](#gas-savings)
+  - [Category](#category)
+  - [Instances](#instances)
+    - [Content](#content)
+    - [LOC (Line of Code)](#loc-line-of-code)
 
-footnote: **Optional** - string/null
+## Properties
 
-findings: **Mandatory** - array of issues found
+### comment
 
-* severity   : **Mandatory** - string - current expected severity - "High" | "Medium" | "Low" | "Gas" | "Refactoring" | "NonCritical" | "Disputed"
+Comments will be added at the top of your report. Accepts plain strings or valid markdown.
 
-* title      : **Mandatory** - string
+- Type: String | Null
 
-* description: **Optional** - string/null
+### footnote
 
-* gasSavings : **Optional** - float/null. Total gas savings for the individual issue. If you wish to include the individual gas saving for each instance, please add that into the `content` section of the instances.
+Footnotes will be added at the bottom of your report. Accepts plain strings or valid markdown.
 
-* category   : **Optional** - string/null. Not currently in use, but may become required in future.
+- Type: String | Null
 
-* instances  : **Mandatory** - an array of instances.
+### findings
 
-  * content : **Optional** - string/null - *This is expected to be in code block format and must start and end with \`\`\`. Content is for code snippets, @audit tags, and file data. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as seperate instances instead of a block of instances, and you need the file to be present for each instance, please ensure that you include this in the content of each issue. If the issue is with the whole file you may leave this empty and just have the link in the loc field*
+An array of all findings.
 
-  * loc     : **Mandatory** - array of strings - *An array of lines of code for this instance. Each loc must contain a link to the file or the line of code.This value will be used to calculate the total instances, when generating the report.*
+- Type: Array
+
+## Findings Array
+
+### Severity
+
+High | Medium | Low | Gas | Refactoring | NonCritical | Disputed
+
+- Type: String (Enum: "High", "Medium", "Low", "Gas", "Refactoring", "NonCritical", "Disputed")
+
+### Title
+
+Title of the issue. Accepts plain strings or valid markdown.
+
+- Type: String
+
+### Description
+
+Description of the issue. Accepts plain strings or valid markdown.
+
+- Type: String | Null
+
+### Gas Savings
+
+Gas Savings.
+
+- Type: Number | Null
+
+### Category
+
+This is for making easier categorization of the issue type.
+
+- Type: String | Null
+
+### Instances
+
+An array of instances where the issues have occurred. This can be separated out for every instance or used as a block of instances. The instance count will be generated from the LOC.
+
+- Type: Array
+
+#### Content
+
+This is expected to be in code block format and must start and end with ```. Content is for code snippets, @audit tags, and file data. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as separate instances instead of a block of instances, and you need the file to be present for each instance, please ensure that you include this in the content of each issue. If the issue is with the whole file you may leave this empty and just have the link in the loc field.
+
+- Type: String | Null
+- Pattern: ^(`{3})[^`]*(\\1)$
+
+#### LOC (Line of Code)
+
+Links to the line of code.
+
+- Type: Array
+- Items: String
+- Pattern: https:\\/\\/github\\.com\\/[^\\/]+\\/.*\\.sol#L\\d+(-L\\d+)?\\)?$
+- Min Items: 1
+
 
 ------
 
@@ -63,4 +131,3 @@ findings: **Mandatory** - array of issues found
 This sample json come the winning bot (Henry) report from the recent Canto Bot race. [view report](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/bot-henry-example.json)
 
 Here is an example report gist that is generated from the winning bot (Henry) report from the recent Canto Bot race. [view gist](https://gist.github.com/code423n4/f2f9d9ea48372636f7d67e29c71c59bb#D%E2%80%9124)
-
