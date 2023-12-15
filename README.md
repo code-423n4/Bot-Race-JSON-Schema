@@ -98,7 +98,7 @@ Gas Savings.
 
 ### Category
 
-This is for making easier categorization of the issue type.
+If category of the issue is clear it can be set as a plain string, otherwise if can be left empty
 
 - Type: String | Null
 
