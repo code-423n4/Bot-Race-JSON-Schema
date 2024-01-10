@@ -4,30 +4,33 @@
 
 You can find the current schema, v0.1.0, [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.1.0/schema.json)
 
-If you want to test your report against the schema you can fetch the schema and use a JSON schema cli implementation such as [ajv-cli](https://github.com/ajv-validator/ajv-cli).
-
-```sh
-curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.1.0/schema.json -o schema.json
-npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
-```
-
 ### Upcoming Version 0.3.0
 
-A new version of the schema will replace v0.1.0 on [Place Holder Date - TBD] and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.3.0/schema.json).
+A new version of the schema will replace v0.1.0 on **January 18th, 2024** and can be found [here](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/v0.3.0/schema.json).
+
 **Changes**:
 
-- restricts the values of `severity`, making it an enum instead of an open string.
-- `content` and `description` are optional
-- `content` must be in code block format, we are expecting \`\`\` at the begining and end of this string.
-- `loc` must contain a link to the code or file.
+- `severity` is no longer an open string and must be one of ("High", "Medium", "Low", "Gas", "Refactoring", "NonCritical", "Disputed")
+- `content` and `description` are now optional
+- `content` is recommended to be in markdown format, such as wrapped in codeblocks (\`\`\`), but will still accept any string.
+- `loc` must contain an absolute github url to line(s) of code.
+- `loc` may continue to be wrapped as a link such as `[1](https://...#L1)`.
+- `loc` can now be set to an empty array, `[]`, but only if `content is provided`
 
-If you want to test your report against the upcoming schema you can fetch the latest tag and validate as before:
+You can see an example of a valid, winning JSON report [here](./LightChaser-example.json)
+
+If you want to test your report for both validation and markdown generation, you can use the new [C4 Botrace Utils](https://www.npmjs.com/package/@code4rena/botrace-utils) cli tool:
+
+### Validation and Markdown Tooling
+The following example will install the [C4 Botrace Utils](https://www.npmjs.com/package/@code4rena/botrace-utils) tool and:
+- Validate a local `./report.json` against the latest Bot Race Schema version
+- Render the markdown of the report to `./report.md` as it will be created via the submission process.
+
+_Requires Node.js 18+_. See https://www.npmjs.com/package/@code4rena/botrace-utils for more options.
 
 ```
-curl https://raw.githubusercontent.com/code-423n4/Bot-Race-JSON-Schema/v0.3.0/schema.json -o schema.json
-npx ajv-cli --spec=draft2020 -s ./schema.json -d report.json
+npx @code4rena/botrace-utils ./report.json > report.md
 ```
-
 
 ## Details
 
@@ -77,30 +80,35 @@ An array of all findings.
 High | Medium | Low | Gas | Refactoring | NonCritical | Disputed
 
 - Type: String (Enum: "High", "Medium", "Low", "Gas", "Refactoring", "NonCritical", "Disputed")
+- Required
 
 ### Title
 
 Title of the issue. Accepts plain strings or valid markdown.
 
 - Type: String
+- Required
 
 ### Description
 
-Description of the issue. Accepts plain strings or valid markdown.
+Description of the issue. Accepts plain strings or valid markdown. May be set to `null`.
 
 - Type: String | Null
+- Required
 
 ### Gas Savings
 
 Gas Savings.
 
 - Type: Number | Null
+- Optional
 
 ### Category
 
 If category of the issue is clear it can be set as a plain string, otherwise if can be left empty
 
 - Type: String | Null
+- Optional
 
 ### Instances
 
@@ -110,25 +118,30 @@ An array of instances where the issues have occurred. This can be separated out 
 
 #### Content
 
-This is expected to be in code block format and must start and end with ```. Content is for code snippets, @audit tags, and file data. You may choose to stack all content for an individual file here as a block, or treat it as an individual instance. If you wish to treat these as separate instances instead of a block of instances, and you need the file to be present for each instance, please ensure that you include this in the content of each issue. If the issue is with the whole file you may leave this empty and just have the link in the loc field.
+Supports markdown strings and is recommended to be formatted as a codeblock (starts and ends with \`\`\`). Content is for code snippets, @audit tags, and file data. The field is optional as long as there is at least 1 entry in the `loc` array. It is recommended to only omit content, if the loc and instance description sufficiently describe the issue.
 
 - Type: String | Null
-- Pattern: ^(\`{3})[^`]*(\\1)$
+- Required (Must be set when the loc array is empty)
 
 #### LOC (Line of Code)
 
-Links to the line of code.
+Absolute Github URLs including hash param deep links to lines of code.
 
 - Type: Array
 - Items: String
 - Pattern: https:\\/\\/github\\.com\\/[^\\/]+\\/.*#L\\d+(-L\\d+)?\\)?$
-- Min Items: 1
+- Min Items: 1 (May be an empty array as long as `content` is set)
 
+##### Example Links
+- `https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.json#L20`
+- `https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.json#L20-L23`
+- `[20](https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.json#L20)`
+- `[20-23](https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.json#L20-L23)`
 
 ------
 
 ## Example
 
-This sample json come the winning bot (Henry) report from the recent Canto Bot race. [view report](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/bot-henry-example.json)
+This sample json come the winning bot (LightChaser) report from the recent reNFT race. [view report](https://github.com/code-423n4/Bot-Race-JSON-Schema/blob/main/LightChaser-example.json)
 
-Here is an example report gist that is generated from the winning bot (Henry) report from the recent Canto Bot race. [view gist](https://gist.github.com/code423n4/f2f9d9ea48372636f7d67e29c71c59bb#D%E2%80%9124)
+Here is an example markdown file that is generated from the winning bot (LightChaser) report from the recent reNFT Bot race. [view bot-report.md](https://github.com/code-423n4/2024-01-renft/blob/main/bot-report.md)
